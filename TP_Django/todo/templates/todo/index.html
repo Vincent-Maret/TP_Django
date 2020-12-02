@@ -31,7 +31,9 @@
           href="{% url 'todo:editTask' task.id %}">{{ task.content }}</a>
       </li>
       {% if task.is_done is False %}
-      <li class="done">Done</li>
+      <li class="done">
+        <a href="{% url 'todo:finishTask' task.id %}">Done</a>
+      </li>
       <li class="delete">Delete</li>
       {% endif %}
     </ul>

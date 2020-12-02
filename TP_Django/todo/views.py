@@ -1,5 +1,5 @@
 '''Manage django views'''
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.utils import timezone
@@ -24,4 +24,12 @@ def add_task(request):
     task_content = request.POST['newTask']
     new_task = Task(content=task_content, created_date=timezone.now())
     new_task.save()
+    return HttpResponseRedirect(reverse('todo:index'))
+
+
+def finish_task(request, task_id):
+    '''Set task.is_done to true'''
+    task = get_object_or_404(Task, pk=task_id)
+    task.is_done = True
+    task.save()
     return HttpResponseRedirect(reverse('todo:index'))
