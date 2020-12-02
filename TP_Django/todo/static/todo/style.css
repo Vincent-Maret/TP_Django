@@ -37,13 +37,13 @@ a {
 }
 
 .delete {
-	background:url(./delete.gif) no-repeat 10px 8px;
+	background:url(./img/delete.gif) no-repeat 10px 8px;
 	text-indent:30px;
 	display:block;
 }
 
 .done {
-	background:url(./done.png) no-repeat 10px 8px;
+	background:url(./img/done.png) no-repeat 10px 8px;
 	text-indent:30px;
 	display:block;
 }

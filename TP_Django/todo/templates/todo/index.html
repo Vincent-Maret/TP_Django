@@ -27,8 +27,13 @@
     {% for task in task_list %}
     <ul>
       <li>
-        <a href="{% url 'todo:editTask' task.id %}">{{ task.content }}</a>
+        <a class="{% if task.is_done %}task-done{% endif %}"
+          href="{% url 'todo:editTask' task.id %}">{{ task.content }}</a>
       </li>
+      {% if task.is_done is False %}
+      <li class="done">Done</li>
+      <li class="delete">Delete</li>
+      {% endif %}
     </ul>
     {% endfor %}
   </ul>
