@@ -19,19 +19,17 @@
 
   <div></div>
 
+  {% if task_list %}
   <ul class="list-unstyled" id="todo">
-    {% if task_list %}
+    {% for task in task_list %}
     <ul>
-      {% for task in task_list %}
       <li>{{ task.content }}</a></li>
-      {% endfor %}
     </ul>
-    {% else %}
-    <p>No task found.</p>
-    {% endif %}
-
+    {% endfor %}
   </ul>
-
+  {% else %}
+  <p>No task found.</p>
+  {% endif %}
 </body>
 
 </html>
