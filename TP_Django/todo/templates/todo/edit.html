@@ -11,9 +11,14 @@
 <body>
   <div class="form-group">
     <h1>To-Do <small>Edit</small></h1>
-    <!-- des choses a ajouter ici -->
-
-
+    {% if task %}
+    <form action="{% url 'todo:updateTask' task.id %}" method="post">
+      {% csrf_token %}
+      <label for="updatedTask">Task content:</label>
+      <input type="text" name="updatedTask" id="updatedTask" value="{{ task.content }}">
+      <input type="submit" value="Update task">
+    </form>
+    {% endif %}
   </div>
 </body>
 

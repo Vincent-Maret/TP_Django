@@ -14,7 +14,8 @@ def index(request):
 
 def edit(request, task_id):
     '''Return a task edition page'''
-    context = {'task_id': task_id}
+    task = get_object_or_404(Task, pk=task_id)
+    context = {'task': task}
     return render(request, 'todo/edit.html', context)
 
 
@@ -38,4 +39,12 @@ def delete_task(request, task_id):
     '''Delete targeted task'''
     task = get_object_or_404(Task, pk=task_id)
     task.delete()
+    return HttpResponseRedirect(reverse('todo:index'))
+
+
+def update_task(request, task_id):
+    task = get_object_or_404(Task, pk=task_id)
+    new_content = request.POST['updatedTask']
+    task.content = new_content
+    task.save()
     return HttpResponseRedirect(reverse('todo:index'))
