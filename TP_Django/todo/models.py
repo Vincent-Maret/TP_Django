@@ -1,3 +1,7 @@
 from django.db import models
 
-# Create your models here.
+
+class Task(models.Model):
+    content = models.CharField(max_length=100)
+    is_done = models.BooleanField(default=False)
+    created_date = models.DateTimeField()
