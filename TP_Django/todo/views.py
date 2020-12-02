@@ -33,3 +33,10 @@ def finish_task(request, task_id):
     task.is_done = True
     task.save()
     return HttpResponseRedirect(reverse('todo:index'))
+
+
+def delete_task(request, task_id):
+    '''Delete targeted task'''
+    task = get_object_or_404(Task, pk=task_id)
+    task.delete()
+    return HttpResponseRedirect(reverse('todo:index'))

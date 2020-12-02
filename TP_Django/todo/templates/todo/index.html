@@ -34,7 +34,9 @@
       <li class="done">
         <a href="{% url 'todo:finishTask' task.id %}">Done</a>
       </li>
-      <li class="delete">Delete</li>
+      <li class="delete">
+        <a href="{% url 'todo:deleteTask' task.id %}">Delete</a>
+      </li>
       {% endif %}
     </ul>
     {% endfor %}
