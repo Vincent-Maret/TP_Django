@@ -41,6 +41,7 @@ def delete_task(request, task_id):
 
 
 def update_task(request, task_id):
+    '''Update task'''
     task = get_object_or_404(Task, pk=task_id)
     new_content = request.POST['updatedTask']
     task.content = new_content
