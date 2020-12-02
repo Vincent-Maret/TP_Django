@@ -20,6 +20,8 @@ def edit(request, task_id):
 def add_task(request):
     '''Add a task in database'''
     task_content = request.POST['newTask']
+    if not task_content:
+        return HttpResponseRedirect(reverse('todo:index'))
     new_task = Task(content=task_content)
     new_task.save()
     return HttpResponseRedirect(reverse('todo:index'))
@@ -44,6 +46,8 @@ def update_task(request, task_id):
     '''Update task'''
     task = get_object_or_404(Task, pk=task_id)
     new_content = request.POST['updatedTask']
+    if not new_content:
+        return HttpResponseRedirect(reverse('todo:editTask', kwargs={'task_id': task_id}))
     task.content = new_content
     task.save()
     return HttpResponseRedirect(reverse('todo:index'))

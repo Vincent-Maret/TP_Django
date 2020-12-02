@@ -47,3 +47,8 @@ a {
 	text-indent:30px;
 	display:block;
 }
+
+.error {
+  color: red;
+  text-align: center;
+}
