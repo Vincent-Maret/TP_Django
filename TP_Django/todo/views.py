@@ -8,15 +8,13 @@ from .models import Task
 def index(request):
     '''Return a list of tasks'''
     task_list = Task.objects.order_by('-created_date')[:10]
-    context = {'task_list': task_list}
-    return render(request, 'todo/index.html', context)
+    return render(request, 'todo/index.html', {'task_list': task_list})
 
 
 def edit(request, task_id):
     '''Return a task edition page'''
     task = get_object_or_404(Task, pk=task_id)
-    context = {'task': task}
-    return render(request, 'todo/edit.html', context)
+    return render(request, 'todo/edit.html', {'task': task})
 
 
 def add_task(request):
