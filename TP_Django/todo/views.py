@@ -7,7 +7,7 @@ from .models import Task
 
 def index(request):
     '''Return a list of tasks'''
-    task_list = Task.objects.all()
+    task_list = Task.objects.order_by('-created_date')[:10]
     context = {'task_list': task_list}
     return render(request, 'todo/index.html', context)
 
