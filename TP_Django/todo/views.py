@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.utils import timezone
 from .models import Task
 
 
@@ -20,4 +21,7 @@ def edit(request, task_id):
 
 def add_task(request):
     '''Add a task in database'''
+    task_content = request.POST['newTask']
+    new_task = Task(content=task_content, created_date=timezone.now())
+    new_task.save()
     return HttpResponseRedirect(reverse('todo:index'))

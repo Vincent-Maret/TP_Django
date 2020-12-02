@@ -13,7 +13,10 @@
     <h1>To-Do <small>List</small></h1>
 
     <form action="{% url 'todo:addTask' %}" method="post">
-      <input type="text" name="addTask">
+      {% csrf_token %}
+      <label for="NewTask">Task content:</label>
+      <input type="text" name="newTask" id="NewTask">
+      <input type="submit" value="add task">
     </form>
   </div>
 
