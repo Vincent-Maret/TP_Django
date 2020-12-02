@@ -13,4 +13,5 @@ def index(request):
 
 def edit(request, task_id):
     '''Return a task edition page'''
-    return HttpResponse("You're editing task %s." % task_id)
+    context = {'task_id': task_id}
+    return HttpResponse(render(request, 'todo/edit.html', context))

@@ -23,7 +23,9 @@
   <ul class="list-unstyled" id="todo">
     {% for task in task_list %}
     <ul>
-      <li>{{ task.content }}</a></li>
+      <li>
+        <a href="{% url 'editTask' task.id %}">{{ task.content }}</a>
+      </li>
     </ul>
     {% endfor %}
   </ul>
