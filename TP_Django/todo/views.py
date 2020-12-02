@@ -1,6 +1,7 @@
 '''Manage django views'''
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from .models import Task
 
 
@@ -15,3 +16,8 @@ def edit(request, task_id):
     '''Return a task edition page'''
     context = {'task_id': task_id}
     return render(request, 'todo/edit.html', context)
+
+
+def add_task(request):
+    '''Add a task in database'''
+    return HttpResponseRedirect(reverse('todo:index'))

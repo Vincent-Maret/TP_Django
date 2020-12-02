@@ -12,9 +12,9 @@
   <div class="form-group">
     <h1>To-Do <small>List</small></h1>
 
-
-    <!-- des choses a ajouter ici -->
-
+    <form action="{% url 'todo:addTask' %}" method="post">
+      <input type="text" name="addTask">
+    </form>
   </div>
 
   <div></div>
@@ -24,7 +24,7 @@
     {% for task in task_list %}
     <ul>
       <li>
-        <a href="{% url 'editTask' task.id %}">{{ task.content }}</a>
+        <a href="{% url 'todo:editTask' task.id %}">{{ task.content }}</a>
       </li>
     </ul>
     {% endfor %}
